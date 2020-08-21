@@ -7,7 +7,7 @@ export class App {
 	_data = new Data();
 	_results = new Results();
 
-	async init() {
+async init() {
 		const colors = await this._data.fetchColors();
 		this._palette = new Palette(colors);
 		this._selection = new Selection();

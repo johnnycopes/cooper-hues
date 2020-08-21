@@ -1,6 +1,6 @@
 export class Selection {
+	colors = [];
 	_$element = document.querySelector("#selection");
-	_colors = [];
 	_maxLength = 3;
 
 	bindClickHandler(callback) {
@@ -12,22 +12,22 @@ export class Selection {
 		if (!target.matches("li")) {
 			return;
 		}
-		const color = this._colors.find(color => color.name === target.dataset.name);
+		const color = this.colors.find(color => color.name === target.dataset.name);
 		return color;
 	}
 
 	addColor(targetColor) {
-		if (this._colors.includes(targetColor) || this._colors.length + 1 > this._maxLength) {
+		if (this.colors.includes(targetColor) || this.colors.length + 1 > this._maxLength) {
 			return;
 		}
-		this._colors.push(targetColor);
+		this.colors.push(targetColor);
 		const $color = targetColor.buildElement();
 		this._$element.append($color);
 	}
 
 	removeColor(targetColor) {
-		const targetColorIndex = this._colors.findIndex(color => color.name === targetColor.name);
-		this._colors.splice(targetColorIndex, 1);
+		const targetColorIndex = this.colors.findIndex(color => color.name === targetColor.name);
+		this.colors.splice(targetColorIndex, 1);
 		const $color = this._$element.children.item(targetColorIndex);
 		$color.remove();
 	}
