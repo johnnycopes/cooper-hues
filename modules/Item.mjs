@@ -1,33 +1,33 @@
 export class Item {
 	constructor(item) {
 		const { id, images, title, url } = item;
-		this.id = id;
-		this.images = images;
-		this.title = title;
-		this.url = url;
+		this._id = id;
+		this._images = images;
+		this._title = title;
+		this._url = url;
 	}
 
 	buildElement() {
 		const $element = document.createElement("li");
 		const $link = document.createElement("a");
 		const $figure = document.createElement("figure");
-		const $caption = this.buildCaption(this.title);
+		const $caption = this._buildCaption(this._title);
 		const $img = document.createElement("img");
 		$element.classList.add("item");
-		$element.dataset.id = this.id;
+		$element.dataset.id = this._id;
 		$element.append($link);
 		$link.classList.add("item__link");
-		$link.href = this.url;
+		$link.href = this._url;
 		$link.append($figure);
 		$figure.classList.add("item__container")
 		$figure.append($caption);
 		$figure.append($img);
 		$img.classList.add("item__image");
-		$img.src = this.images[0].n.url;
+		$img.src = this._images[0].n.url;
 		return $element;
 	}
 
-	buildCaption(title) {
+	_buildCaption(title) {
 		const [ line1, line2, line3 ] = title.split(",");
 		const $caption = document.createElement("figcaption");
 		$caption.classList.add("item__caption");

@@ -1,10 +1,10 @@
 import { Color } from "./Color.mjs";
 
 export class Data {
-	baseUrl = "https://api.collection.cooperhewitt.org/rest/";
-	accessToken = process.env.API_KEY;
-	getColorsMethod = "colors.palettes.getInfo";
-	getItemsMethod = "search.objects";
+	_baseUrl = "https://api.collection.cooperhewitt.org/rest/";
+	_accessToken = process.env.API_KEY;
+	_getColorsMethod = "colors.palettes.getInfo";
+	_getItemsMethod = "search.objects";
 
 	async fetchColors() {
 		const [css, crayola] = await Promise.all([
@@ -24,20 +24,20 @@ export class Data {
 		const colorsStr = colors
 			.map(color => color.name)
 			.join("|");
-		const queryStr = this._buildQueryStr(this.getItemsMethod, `color=${colorsStr}&page=1&per_page=50`);
+		const queryStr = this._buildQueryStr(this._getItemsMethod, `color=${colorsStr}&page=1&per_page=50`);
 		const items = await fetch(queryStr);
 		return items.json();
 	}
 
 	_buildQueryStr(method, paramStr = "") {
-		return `${this.baseUrl}?
+		return `${this._baseUrl}?
 			method=cooperhewitt.${method}&
-			access_token=${this.accessToken}&
+			access_token=${this._accessToken}&
 			${paramStr}`;
 	}
 
 	_buildPaletteQueryStr(paletteName) {
-		return this._buildQueryStr(this.getColorsMethod, `palette=${paletteName}`);
+		return this._buildQueryStr(this._getColorsMethod, `palette=${paletteName}`);
 	}
 
 	_generateColorsArr(colorsObj, paletteName) {

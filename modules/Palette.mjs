@@ -1,16 +1,16 @@
 export class Palette {
-	$element = document.querySelector("#palette");
+	_$element = document.querySelector("#palette");
 
 	constructor(colors = []) {
-		this.colors = colors;
-		this.colors.forEach(color => {
+		this._colors = colors;
+		this._colors.forEach(color => {
 			const $color = color.buildElement();
-			this.$element.append($color);
+			this._$element.append($color);
 		});
 	}
 
 	bindClickHandler(callback) {
-		this.$element.addEventListener("click", callback);
+		this._$element.addEventListener("click", callback);
 	}
 
 	onColorClick(event) {
@@ -18,7 +18,7 @@ export class Palette {
 		if (!target.matches("li")) {
 			return;
 		}
-		const color = this.colors.find(color => color.name === target.dataset.name);
+		const color = this._colors.find(color => color.name === target.dataset.name);
 		return color;
 	}
 }

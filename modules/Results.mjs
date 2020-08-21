@@ -1,19 +1,19 @@
 import { Item } from "./Item.mjs";
 
 export class Results {
-	$element = document.querySelector("#results");
-	items = [];
+	_$element = document.querySelector("#results");
+	_items = [];
 
 	setItems(items) {
-		this.$element.innerHTML = "";
+		this._$element.innerHTML = "";
 		if (!items.objects) {
 			return;
 		}
 		this.currentPage = items.page;
-		this.items = items.objects.map(item => new Item(item));
-		this.items.forEach(item => {
+		this._items = items.objects.map(item => new Item(item));
+		this._items.forEach(item => {
 			const $item = item.buildElement();
-			this.$element.append($item);
+			this._$element.append($item);
 		})
 	}
 }
