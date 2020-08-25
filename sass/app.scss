@@ -1,3 +1,26 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin: 24px;
+}
+
+.title {
+
+	h1 {
+		font-weight: 600;
+		font-size: 24px;
+	}
+}
+
+.description {
+	text-align: right;
+	
+	p:first-child {
+		margin-bottom: 4px;
+	}
+}
+
 .palette {
 	display: flex;
 	justify-content: center;
@@ -15,6 +38,9 @@
 
 .selection {
 	display: flex;
+	justify-content: center;
+	margin-top: 48px;
+	margin-bottom: 48px;
 
 	.color {
 		width: 48px;
@@ -31,7 +57,6 @@
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-	width: 100%;
 }
 
 .item {
@@ -63,13 +88,18 @@
 	}
 }
 
+.no-results,
+.instructions {
+	font-size: 36px;
+}
+
 
 .loader{
   width: 128px;
   height: 128px;
   border-radius: 50%;
-  border: 8px solid lightblue;
-  border-top-color: cadetblue;
+  border: 8px solid #bfc3d8;
+  border-top-color: #6973a5;
   animation: loading 1.2s ease-in-out infinite;
 }
 

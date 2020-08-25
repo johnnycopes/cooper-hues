@@ -60,12 +60,14 @@ export class Results {
 
 	_buildInstructions() {
 		const $instructions = document.createElement("div");
+		$instructions.classList.add("instructions");
 		$instructions.textContent = "Choose a color to see items";
 		return $instructions;
 	}
 
 	_buildNoResults() {
 		const $noResults = document.createElement("div");
+		$noResults.classList.add("no-results");
 		$noResults.textContent = "No results found";
 		return $noResults;
 	}
