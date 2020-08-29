@@ -1,8 +1,11 @@
+.feature {
+	padding: 24px;
+}
+
 .header {
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
-	margin: 24px;
 }
 
 .title {
@@ -39,8 +42,6 @@
 .selection {
 	display: flex;
 	justify-content: center;
-	margin-top: 48px;
-	margin-bottom: 48px;
 
 	.color {
 		width: 48px;
@@ -101,6 +102,43 @@
   border: 8px solid #bfc3d8;
   border-top-color: #6973a5;
   animation: loading 1.2s ease-in-out infinite;
+}
+
+.pagination {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	background: #fff;
+	border-top: 1px solid #f6f7fa;
+
+	.range {
+		flex-shrink: 0;
+		margin-right: 48px;
+	}
+
+	.pages {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.page {
+		margin-right: 16px;
+
+		&--current {
+			font-weight: 600;
+		}
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+	}
+}
+
+.hidden {
+	display: none;
 }
 
 @keyframes loading{

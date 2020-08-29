@@ -1,8 +1,10 @@
 import { Item } from "./Item.mjs";
+import { Pagination } from "./Pagination";
 
 export class Results {
 	_$element = document.querySelector("#results");
 	_items = [];
+	_pagination = new Pagination();
 
 	constructor() {
 		this._$loader = this._buildLoader();
@@ -28,24 +30,23 @@ export class Results {
 	_setInstructions() {
 		this._clear();
 		this._$element.append(this._$instructions);
+		this._pagination.hide();
 	}
 
 	_setNoResults() {
 		this._clear();
 		this._$element.append(this._$noResults);
+		this._pagination.hide();
 	}
 
 	_setItems(items) {
 		this._clear();
-		if (!items.objects) {
-			return;
-		}
-		this.currentPage = items.page;
 		this._items = items.objects.map(item => new Item(item));
 		this._items.forEach(item => {
 			const $item = item.buildElement();
 			this._$element.append($item);
 		})
+		this._pagination.update(items)
 	}
 
 	_clear() {

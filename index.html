@@ -7,10 +7,15 @@
 	<title>Cooper Hues</title>
 </head>
 <body>
-	<header class="header">
+	<header class="feature header">
 		<div class="title">
 			<h1>Cooper Hues</h1>
-			<p>made by johnnycopes</p>
+			<a href="https://www.johnnycopes.com"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				made by johnnycopes
+			</a>
 		</div>
 		<div class="description">
 			<p>Design inspiration, sorted by color.</p>
@@ -18,14 +23,34 @@
 		</div>
 	</header>
 	<ul id="palette"
-		class="palette"
+		class="feature palette"
 	></ul>
 	<ul id="selection"
-		class="selection"
+		class="feature selection"
 	></ul>
 	<ul id="results"
-		class="results"
+		class="feature results"
 	></ul>
+	<div id="pagination"
+		class="feature pagination"
+	>
+		<p class="range">
+			Showing
+			<span id="range__start">1</span>
+			- 
+			<span id="range__end">50</span>
+			of 
+			<span id="range__total">3480</span>
+			results
+		</p>
+		<ul id="pages"
+			class="pages"
+		>
+			<li class="page page--current">1</li>
+			<li class="page">2</li>
+			<li class="page">3</li>
+		</ul>
+	</div>
 	<script src="main.js" defer></script>
 </body>
 </html>

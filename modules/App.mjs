@@ -2,15 +2,16 @@ import { Data } from "./Data.mjs";
 import { Palette } from "./Palette.mjs";
 import { Results } from "./Results.mjs";
 import { Selection } from "./Selection.mjs";
+import { Pagination } from "./Pagination.mjs";
 
 export class App {
 	_data = new Data();
+	_selection = new Selection();
 	_results = new Results();
 
-async init() {
+	async init() {
 		const colors = await this._data.fetchColors();
 		this._palette = new Palette(colors);
-		this._selection = new Selection();
 		this._palette.bindClickHandler(event => this._onPaletteClick(event));
 		this._selection.bindClickHandler(event => this._onSelectionClick(event));
 		this._updateResults();
