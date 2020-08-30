@@ -65,6 +65,7 @@
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
+	padding-bottom: 48px;
 }
 
 .item {
@@ -131,13 +132,17 @@
 		align-items: center;
 		
 		&__icon {
-			margin-right: 8px;
+			height: 36px;
+			width: 36px;
+			padding: 8px;
+			margin-right: 4px;
 			stroke: #6973a5;
 			cursor: pointer;
 
 			&--disabled {
 				stroke: #bfc3d8;
 				font-size: 40px;
+				cursor: default;
 			}
 
 			&:last-of-type {
@@ -151,13 +156,18 @@
 	}
 
 	.page {
-		margin-right: 8px;
-		padding: 8px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 36px;
+		width: 36px;
+		margin-right: 4px;
 		cursor: pointer;
 
 		&--current {
 			font-weight: 600;
 			background: #f6f7fa;
+			cursor: default;
 		}
 	}
 }

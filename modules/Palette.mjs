@@ -1,5 +1,7 @@
+import { $ } from "../utility/dom";
+
 export class Palette {
-	_$element = document.querySelector("#palette");
+	_$element = $("#palette");
 
 	constructor(colors = []) {
 		this._colors = colors;

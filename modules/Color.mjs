@@ -1,3 +1,5 @@
+import { createElement } from "../utility/dom";
+
 export class Color {
 	constructor(hex, name, palette) {
 		this.name = name;
@@ -6,12 +8,15 @@ export class Color {
 	}
 
 	buildElement() {
-		const $element = document.createElement("li");
-		$element.classList.add("color");
-		$element.style.background = this._hex;
-		$element.dataset.hex = this._hex;
-		$element.dataset.name = this.name;
-		$element.dataset.palette = this._palette;
-		return $element;
+		return createElement({
+			tagName: "li",
+			classes: ["color"],
+			styles: { background: this._hex },
+			dataAttrs: {
+				name: this.name,
+				hex: this._hex,
+				palette: this._palette
+			}
+		});
 	}
 }

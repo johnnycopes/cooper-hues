@@ -1,9 +1,11 @@
+import { $ } from "../utility/dom";
+
 export class Selection {
 	_colors = [];
 	get colors() {
 		return this._colors.slice();
 	}
-	_$element = document.querySelector("#selection");
+	_$element = $("#selection");
 	_maxLength = 3;
 
 	bindClickHandler(callback) {

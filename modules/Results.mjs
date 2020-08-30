@@ -1,7 +1,8 @@
-import { Item } from "./Item.mjs";
+import { $, createElement } from "../utility/dom";
+import { Item } from "./Item";
 
 export class Results {
-	_$element = document.querySelector("#results");
+	_$element = $("#results");
 	_items = [];
 
 	constructor(pagination) {
@@ -54,22 +55,25 @@ export class Results {
 	}
 
 	_buildLoader() {
-		const $loader = document.createElement("div");
-		$loader.classList.add("loader");
-		return $loader;
+		return createElement({
+			tagName: "div",
+			classes: ["loader"]
+		});
 	}
 
 	_buildInstructions() {
-		const $instructions = document.createElement("div");
-		$instructions.classList.add("instructions");
-		$instructions.textContent = "Choose a color to see items";
-		return $instructions;
+		return createElement({
+			tagName: "div",
+			classes: ["instructions"],
+			content: "Choose a color to see items"
+		});
 	}
 
 	_buildNoResults() {
-		const $noResults = document.createElement("div");
-		$noResults.classList.add("no-results");
-		$noResults.textContent = "No results found";
-		return $noResults;
+		return createElement({
+			tagName: "div",
+			classes: ["no-results"],
+			content: "No results found"
+		});
 	}
 }
