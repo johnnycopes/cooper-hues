@@ -1,5 +1,5 @@
 .feature {
-	padding: 24px;
+	padding: 16px 24px;
 }
 
 .header {
@@ -13,6 +13,10 @@
 	h1 {
 		font-weight: 600;
 		font-size: 24px;
+	}
+
+	a {
+		color: #6973a5;
 	}
 }
 
@@ -37,16 +41,19 @@
 	text-align: center;
 	width: 24px;
 	height: 24px;
+	cursor: pointer;
 }
 
 .selection {
 	display: flex;
 	justify-content: center;
+	height: 80px; // color + padding
 
 	.color {
 		width: 48px;
 		height: 48px;
 		margin-right: 24px;
+		cursor: pointer;
 
 		&:last-child {
 			margin-right: 0;
@@ -119,20 +126,38 @@
 		margin-right: 48px;
 	}
 
+	.menu {
+		display: flex;
+		align-items: center;
+		
+		&__icon {
+			margin-right: 8px;
+			stroke: #6973a5;
+			cursor: pointer;
+
+			&--disabled {
+				stroke: #bfc3d8;
+				font-size: 40px;
+			}
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+		}
+	}
+
 	.pages {
 		display: flex;
-		flex-wrap: wrap;
 	}
 
 	.page {
-		margin-right: 16px;
+		margin-right: 8px;
+		padding: 8px;
+		cursor: pointer;
 
 		&--current {
 			font-weight: 600;
-		}
-
-		&:last-of-type {
-			margin-right: 0;
+			background: #f6f7fa;
 		}
 	}
 }

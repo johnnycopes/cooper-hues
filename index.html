@@ -43,14 +43,33 @@
 			<span id="range__total">3480</span>
 			results
 		</p>
-		<ul id="pages"
-			class="pages"
+		<nav id="pagination__menu"
+			class="menu"
 		>
-			<li class="page page--current">1</li>
-			<li class="page">2</li>
-			<li class="page">3</li>
-		</ul>
+			<i id="menu__first"
+				class="menu__icon"
+				data-feather="chevrons-left"
+			></i>
+			<i id="menu__previous"
+				class="menu__icon"
+				data-feather="chevron-left"
+			></i>
+			<ul id="pages"
+			class="pages"
+			></ul>
+			<i id="menu__next"
+				class="menu__icon"
+				data-feather="chevron-right"
+			></i>
+			<i id="menu__last"
+				class="menu__icon"
+				data-feather="chevrons-right"
+			></i>
+		</nav>
 	</div>
 	<script src="main.js" defer></script>
+	<!-- <script>
+		console.log(feather);
+	</script> -->
 </body>
 </html>

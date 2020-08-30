@@ -1,12 +1,11 @@
 import { Item } from "./Item.mjs";
-import { Pagination } from "./Pagination";
 
 export class Results {
 	_$element = document.querySelector("#results");
 	_items = [];
-	_pagination = new Pagination();
 
-	constructor() {
+	constructor(pagination) {
+		this._pagination = pagination;
 		this._$loader = this._buildLoader();
 		this._$instructions = this._buildInstructions();
 		this._$noResults = this._buildNoResults();
@@ -25,6 +24,7 @@ export class Results {
 	setLoading() {
 		this._clear();
 		this._$element.append(this._$loader)
+		this._pagination.hide();
 	}
 
 	_setInstructions() {

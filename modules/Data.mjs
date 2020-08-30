@@ -17,14 +17,14 @@ export class Data {
 		return colors;
 	}
 
-	async fetchItems(colors) {
+	async fetchItems(colors, page) {
 		if (!colors.length) {
 			return [];
 		}
 		const colorsStr = colors
 			.map(color => color.name)
 			.join("|");
-		const queryStr = this._buildQueryStr(this._getItemsMethod, `color=${colorsStr}&page=1&per_page=50`);
+		const queryStr = this._buildQueryStr(this._getItemsMethod, `color=${colorsStr}&page=${page}&per_page=50`);
 		const items = await fetch(queryStr);
 		return items.json();
 	}
