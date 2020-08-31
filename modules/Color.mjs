@@ -1,7 +1,7 @@
 import { createElement } from "../utility/dom";
 
 export class Color {
-	constructor(hex, name, palette) {
+	constructor(name, hex, palette) {
 		this.name = name;
 		this._hex = hex;
 		this._palette = palette;

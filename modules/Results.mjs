@@ -16,32 +16,18 @@ export class Results {
 		if (items?.objects?.length) {
 			this._setItems(items);
 		} else if (selectionHasColors) {
-			this._setNoResults();
+			this._setElement(this._$noResults);
 		} else {
-			this._setInstructions();
+			this._setElement(this._$instructions);
 		}
 	}
 
 	setLoading() {
-		this._clear();
-		this._$element.append(this._$loader)
-		this._pagination.hide();
-	}
-
-	_setInstructions() {
-		this._clear();
-		this._$element.append(this._$instructions);
-		this._pagination.hide();
-	}
-
-	_setNoResults() {
-		this._clear();
-		this._$element.append(this._$noResults);
-		this._pagination.hide();
+		this._setElement(this._$loader);
 	}
 
 	_setItems(items) {
-		this._clear();
+		this._$element.innerHTML = "";
 		this._items = items.objects.map(item => new Item(item));
 		this._items.forEach(item => {
 			const $item = item.buildElement();
@@ -50,8 +36,10 @@ export class Results {
 		this._pagination.update(items)
 	}
 
-	_clear() {
+	_setElement($element) {
 		this._$element.innerHTML = "";
+		this._$element.append($element);
+		this._pagination.hide();
 	}
 
 	_buildLoader() {

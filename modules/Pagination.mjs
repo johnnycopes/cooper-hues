@@ -1,4 +1,4 @@
-import { $, $$, containsSubstr, createElement } from "../utility/dom";
+import { $, $$, containsSubstr, createElement, bulkAddClass, bulkRemoveClass, bulkUpdateClass } from "../utility/dom";
 
 export class Pagination {
 	currentPage = 1;
@@ -53,23 +53,18 @@ export class Pagination {
 	}
 
 	_updateIcons(currentPage, totalPages) {
-		console.log("update fired");
 		if (totalPages <= 1) {
-			this._$menuIcons.forEach(menuIcon => menuIcon.classList.add("hidden"));
+			bulkAddClass(this._$menuIcons, "hidden");
 			return;
 		}
 		this._$first.dataset.page = 1;
 		this._$previous.dataset.page = Math.max(currentPage - 1, 1);
 		this._$next.dataset.page = Math.min(currentPage + 1, totalPages);
 		this._$last.dataset.page = totalPages;
-		this._$menuIcons.forEach(menuIcon => menuIcon.classList.remove("hidden"));
-		this._$menuIcons.forEach(menuIcon => {
-			if (Number(menuIcon.dataset.page) === currentPage) {
-				menuIcon.classList.add("menu__icon--disabled");
-			} else {
-				menuIcon.classList.remove("menu__icon--disabled");
-			}
-		})
+		bulkRemoveClass(this._$menuIcons, "hidden");
+		bulkUpdateClass(
+			this._$menuIcons, "menu-icon--disabled",  element => Number(element.dataset.page) === currentPage
+		);
 	}
 
 	_updateList(currentPage, totalPages) {
@@ -77,8 +72,9 @@ export class Pagination {
 		if (totalPages <= 1) {
 			return;
 		}
-		const start = Math.max(1, currentPage - 3);
-		const end = Math.min(totalPages, currentPage + 3);
+		const pagesRange = 3;
+		const start = Math.max(1, currentPage - pagesRange);
+		const end = Math.min(totalPages, currentPage + pagesRange);
 		for (let i = start; i <= end; i++) {
 			const $page = createElement({
 				tagName: "li",

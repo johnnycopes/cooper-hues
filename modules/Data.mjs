@@ -45,7 +45,7 @@ export class Data {
 			.entries(colorsObj)
 			.reduce((accum, entry) => {
 				const [hex, details] = entry;
-				const color = new Color(hex, details.name, paletteName);
+				const color = new Color(details.name, hex, paletteName);
 				accum.push(color);
 				return accum;
 			}, []);

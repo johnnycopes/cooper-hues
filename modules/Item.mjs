@@ -1,3 +1,5 @@
+import { createElement, appendNested } from "../utility/dom";
+
 export class Item {
 	constructor(item) {
 		const { id, images, title, url } = item;
@@ -8,45 +10,59 @@ export class Item {
 	}
 
 	buildElement() {
-		const $element = document.createElement("li");
-		const $link = document.createElement("a");
-		const $figure = document.createElement("figure");
+		const $element = createElement({
+			tagName: "li",
+			classes: ["item"],
+			dataAttrs: { id: this._id }
+		});
+		const $link = createElement({
+			tagName: "a",
+			classes: ["item__link"],
+			attrs: { href: this._url }
+		});
+		const $figure = createElement({
+			tagName: "figure",
+			classes: ["item__container"]
+		})
 		const $caption = this._buildCaption(this._title);
-		const $img = document.createElement("img");
-		$element.classList.add("item");
-		$element.dataset.id = this._id;
-		$element.append($link);
-		$link.classList.add("item__link");
-		$link.href = this._url;
-		$link.append($figure);
-		$figure.classList.add("item__container")
-		$figure.append($caption);
-		$figure.append($img);
-		$img.classList.add("item__image");
-		$img.src = this._images[0].n.url;
+		const $img = createElement({
+			tagName: "img",
+			classes: ["item__image"],
+			attrs: { src: this._images[0].n.url }
+		});
+		appendNested($element, $link, $figure);
+		$figure.append($caption, $img);
 		return $element;
 	}
 
 	_buildCaption(title) {
-		const [ line1, line2, line3 ] = title.split(",");
-		const $caption = document.createElement("figcaption");
-		$caption.classList.add("item__caption");
-		const $item = document.createElement("p");
-		$item.classList.add("item__title");
-		$item.textContent = line1;
+		const [line1, line2, line3] = title.split(",");
+		const $caption = createElement({
+			tagName: "figcaption",
+			classes: ["item__caption"]
+		});
+		const $item = createElement({
+			tagName: "p",
+			classes: ["item__title"],
+			content: line1
+		});
 		$caption.append($item);
 		if (!line2 && !line3) {
 			return $caption;
 		}
 		if (line3) {
-			const $details = document.createElement("p");
-			$details.classList.add("item__description");
-			$details.textContent = line2;
+			const $details = createElement({
+				tagName: "p",
+				classes: ["item__description"],
+				content: line2
+			});
 			$caption.append($details);
 		}
-		const $year = document.createElement("p");
-		$year.classList.add("item__year");
-		$year.textContent = line3 ? line3 : line2;
+		const $year = createElement({
+			tagName: "p",
+			classes: ["item__year"],
+			content: line3 ? line3 : line2
+		});
 		$caption.append($year);
 		return $caption;
 	}
