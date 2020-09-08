@@ -9,7 +9,7 @@ export class Item {
 		this._url = url;
 	}
 
-	buildElement() {
+	render() {
 		const $element = createElement({
 			tagName: "li",
 			classes: ["item"],
@@ -18,13 +18,17 @@ export class Item {
 		const $link = createElement({
 			tagName: "a",
 			classes: ["item__link"],
-			attrs: { href: this._url }
+			attrs: {
+				href: this._url,
+				target: "_blank",
+				rel: "noreferrer noopener"
+			}
 		});
 		const $figure = createElement({
 			tagName: "figure",
 			classes: ["item__container"]
 		})
-		const $caption = this._buildCaption(this._title);
+		const $caption = this._createCaption(this._title);
 		const $img = createElement({
 			tagName: "img",
 			classes: ["item__image"],
@@ -35,7 +39,7 @@ export class Item {
 		return $element;
 	}
 
-	_buildCaption(title) {
+	_createCaption(title) {
 		const [line1, line2, line3] = title.split(",");
 		const $caption = createElement({
 			tagName: "figcaption",

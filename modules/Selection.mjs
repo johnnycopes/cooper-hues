@@ -26,7 +26,7 @@ export class Selection {
 			return false;
 		}
 		this._colors.push(targetColor);
-		const $color = targetColor.buildElement();
+		const $color = targetColor.render();
 		this._$element.append($color);
 		return true;
 	}

@@ -7,9 +7,9 @@ export class Results {
 
 	constructor(pagination) {
 		this._pagination = pagination;
-		this._$loader = this._buildLoader();
-		this._$instructions = this._buildInstructions();
-		this._$noResults = this._buildNoResults();
+		this._$loader = this._createLoader();
+		this._$instructions = this._createInstructions();
+		this._$noResults = this._createNoResults();
 	}
 
 	update(items, selectionHasColors) {
@@ -30,7 +30,7 @@ export class Results {
 		this._$element.innerHTML = "";
 		this._items = items.objects.map(item => new Item(item));
 		this._items.forEach(item => {
-			const $item = item.buildElement();
+			const $item = item.render();
 			this._$element.append($item);
 		})
 		this._pagination.update(items)
@@ -42,14 +42,14 @@ export class Results {
 		this._pagination.hide();
 	}
 
-	_buildLoader() {
+	_createLoader() {
 		return createElement({
 			tagName: "div",
 			classes: ["loader"]
 		});
 	}
 
-	_buildInstructions() {
+	_createInstructions() {
 		return createElement({
 			tagName: "div",
 			classes: ["instructions"],
@@ -57,11 +57,11 @@ export class Results {
 		});
 	}
 
-	_buildNoResults() {
+	_createNoResults() {
 		return createElement({
 			tagName: "div",
 			classes: ["no-results"],
-			content: "No results found"
+			content: "No items found"
 		});
 	}
 }

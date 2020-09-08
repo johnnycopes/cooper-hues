@@ -6,7 +6,7 @@ export class Palette {
 	constructor(colors = []) {
 		this._colors = colors;
 		this._colors.forEach(color => {
-			const $color = color.buildElement();
+			const $color = color.render();
 			this._$element.append($color);
 		});
 	}

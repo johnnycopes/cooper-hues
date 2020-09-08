@@ -8,8 +8,8 @@ export class Data {
 
 	async fetchColors() {
 		const [css, crayola] = await Promise.all([
-			fetch(this._buildPaletteQueryStr("css4")).then(cssResponse => cssResponse.json()),
-			fetch(this._buildPaletteQueryStr("crayola")).then(crayolaResponse => crayolaResponse.json()),
+			fetch(this._createPaletteQueryStr("css4")).then(cssResponse => cssResponse.json()),
+			fetch(this._createPaletteQueryStr("crayola")).then(crayolaResponse => crayolaResponse.json()),
 		]);
 		const cssColors = this._generateColorsArr(css.colors, "CSS");
 		const crayolaColors = this._generateColorsArr(crayola.colors, "Crayola");
@@ -24,20 +24,20 @@ export class Data {
 		const colorsStr = colors
 			.map(color => color.name)
 			.join("|");
-		const queryStr = this._buildQueryStr(this._getItemsMethod, `color=${colorsStr}&page=${page}&per_page=50`);
+		const queryStr = this._createQueryStr(this._getItemsMethod, `color=${colorsStr}&page=${page}&per_page=50`);
 		const items = await fetch(queryStr);
 		return items.json();
 	}
 
-	_buildQueryStr(method, paramStr = "") {
+	_createQueryStr(method, paramStr = "") {
 		return `${this._baseUrl}?
 			method=cooperhewitt.${method}&
 			access_token=${this._accessToken}&
 			${paramStr}`;
 	}
 
-	_buildPaletteQueryStr(paletteName) {
-		return this._buildQueryStr(this._getColorsMethod, `palette=${paletteName}`);
+	_createPaletteQueryStr(paletteName) {
+		return this._createQueryStr(this._getColorsMethod, `palette=${paletteName}`);
 	}
 
 	_generateColorsArr(colorsObj, paletteName) {

@@ -7,7 +7,7 @@ export class Color {
 		this._palette = palette;
 	}
 
-	buildElement() {
+	render() {
 		return createElement({
 			tagName: "li",
 			classes: ["color"],
