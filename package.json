@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html",
+		"build": "parcel build index.html",
+		"deploy": "npm run build && cd dist && surge . --domain https://cooper-hues.surge.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "browserslist": [
