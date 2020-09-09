@@ -14,10 +14,6 @@
 		font-weight: 600;
 		font-size: 24px;
 	}
-
-	a {
-		color: #6973a5;
-	}
 }
 
 .description {
@@ -72,6 +68,10 @@
 	flex: 1 1 33.33%;
 	margin-bottom: 24px;
 
+	&__link {
+		color: $black;
+	}
+
 	&__container {
 		display: flex;
 		flex-direction: column;
@@ -107,8 +107,8 @@
   width: 128px;
   height: 128px;
   border-radius: 50%;
-  border: 8px solid #bfc3d8;
-  border-top-color: #6973a5;
+  border: 8px solid $light-purple;
+  border-top-color: $purple;
   animation: loading 1.2s ease-in-out infinite;
 }
 
@@ -119,8 +119,8 @@
 	width: 100%;
 	position: fixed;
 	bottom: 0;
-	background: #fff;
-	border-top: 1px solid #f6f7fa;
+	background: $white;
+	border-top: 1px solid $gray;
 
 	.range {
 		flex-shrink: 0;
@@ -136,11 +136,11 @@
 			width: 36px;
 			padding: 8px;
 			margin-right: 4px;
-			stroke: #6973a5;
+			stroke: $purple;
 			cursor: pointer;
 
 			&--disabled {
-				stroke: #bfc3d8;
+				stroke: $light-purple;
 				font-size: 40px;
 				cursor: default;
 			}
@@ -166,7 +166,7 @@
 
 		&--current {
 			font-weight: 600;
-			background: #f6f7fa;
+			background: $gray;
 			cursor: default;
 		}
 	}

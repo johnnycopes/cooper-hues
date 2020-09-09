@@ -1,0 +1,32 @@
+$black: #18191b;
+$purple: #6973a5;
+$light-purple: #bfc3d8;
+$gray: #f6f7fa;
+$white: #fff;
+
+@mixin minimal-scrollbar {
+	&::-webkit-scrollbar {
+		width: 10px;
+
+		&-button {
+			&:start:decrement,
+			&:end:increment {
+				height: 4px;
+			}
+		}
+
+		&-track {
+			background: $gray;
+		}
+
+		&-thumb {
+			background: $light-purple;
+			border-radius: 8px;
+
+			&:hover {
+				background: color("foreground", 500);
+				border-width: 4px;
+			}
+		}
+	}
+}

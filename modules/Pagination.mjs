@@ -25,11 +25,10 @@ export class Pagination {
 
 	onPageClick(event) {
 		const target = event.target;
-		if ((!target.matches("li") && !target.matches("svg")) || containsSubstr(target, "disabled", "current")) {
-			return;
+		if (target.dataset.page && !containsSubstr(target, "current", "disabled")) {
+			const page = event.target.dataset.page;
+			return page;
 		}
-		const page = event.target.dataset.page;
-		return page;
 	}
 
 	hide() {
@@ -63,7 +62,7 @@ export class Pagination {
 		this._$last.dataset.page = totalPages;
 		bulkRemoveClass(this._$menuIcons, "hidden");
 		bulkUpdateClass(
-			this._$menuIcons, "menu-icon--disabled",  element => Number(element.dataset.page) === currentPage
+			this._$menuIcons, "menu__icon--disabled", element => Number(element.dataset.page) === currentPage
 		);
 	}
 
@@ -79,6 +78,7 @@ export class Pagination {
 			const $page = createElement({
 				tagName: "li",
 				classes: ["page", i === currentPage ? "page--current" : ""],
+				dataAttrs: { "page": i },
 				content: i.toString()
 			});
 			this._$pagesList.append($page);
