@@ -1,4 +1,4 @@
-import { $, $$, containsSubstr, createElement, bulkAddClass, bulkRemoveClass, bulkUpdateClass } from "../utility/dom";
+import { $, $$, containsClassSubstr, createElement, bulkAddClass, bulkRemoveClass, bulkUpdateClass } from "../utility/dom";
 
 export class Pagination {
 	currentPage = 1;
@@ -25,7 +25,7 @@ export class Pagination {
 
 	onPageClick(event) {
 		const target = event.target;
-		if (target.dataset.page && !containsSubstr(target, "current", "disabled")) {
+		if (target.dataset.page && !containsClassSubstr(target, "current", "disabled")) {
 			const page = event.target.dataset.page;
 			return page;
 		}

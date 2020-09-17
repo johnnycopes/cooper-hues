@@ -65,9 +65,9 @@ export function appendNested(...elements) {
 	}
 }
 
-export function containsSubstr(element, ...substrings) {
+export function containsClassSubstr(element, ...classSubstrings) {
 	const classNames = Array.from(element.classList);
-	return substrings.some(substr => 
-		classNames.some(className => className.includes(substr))
+	return classSubstrings.some(classSubstr =>
+		classNames.some(className => className.includes(classSubstr))
 	);
 }

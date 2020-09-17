@@ -13,7 +13,7 @@ export class Results {
 	}
 
 	update(items, selectionHasColors) {
-		if (items?.objects?.length) {
+		if (items.objects?.length) {
 			this._setItems(items);
 		} else if (selectionHasColors) {
 			this._setElement(this._$noResults);
